@@ -1,9 +1,31 @@
 Materialize Docs
 
+https://materializecss.com/getting-started.html
+
 Materialize CDN for compiled and minified CSS:
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 
+                            ---------------------------------------
+
 Materialize CDN for compiled and minified JS:
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>    (USE THIS ONE)
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>      (LATEST ONE)
+
+                            -------------------------------------
+
+JQUERY:
+https://cdnjs.com/libraries/jquery/             3rd one down...copy script tag
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>           (USE THIS ONE)
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>           (LATEST ONE)
+
+                                -------------------------------------
+MATERIAL ICONS GUIDE:
+
+http://google.github.io/material-design-icons/
+SETUP LINK:
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
