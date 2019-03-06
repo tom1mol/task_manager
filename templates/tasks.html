@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+                {% for task in tasks %}
+                {{task.task_name}}
+                {{task.category_name}}
+                {{task.task_description}}
+                {{task.is_urgent}}
+                {{task.due_date}}
+                {% endfor %}
+       
+
+{% endblock %}
+
+<!-- base.html is parent template from which we want to inherrit and also inject into-->
+<!-- for the child tag to inherit correctly from the parent, we remove the HTML elements, e.g. HTML, the body, the head, and HTML tags themselves and replace them with another jinja block -->
+<!--display the contents of each field name that's in our database in our tasks collection. -->
+<!-- If we don't specify the word content in this case, it won't be displayed because the parent is looking for that.(looking for content within a block that has that identifier -->

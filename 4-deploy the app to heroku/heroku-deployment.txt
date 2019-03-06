@@ -1,0 +1,51 @@
+sudo pip3 install flask                             #install flask
+
+
+
+heroku:
+go to dashboard.heroku.com/apps
+>>>create new app
+>>>name:task-manager-flask-mongodonkey
+>>region: europe
+
+
+
+in bash type: heroku login
+email: tom1mol2018@gmail.com    
+pass: 30S19?
+
+bash type: heroku apps          #displays apps we have in heroku
+
+go to heroke page...task-manager-flask-mongodonkey >>> create new git repository and copy command below
+>>>heroku git:remote -a task-manager-flask-mongodonkey
+
+paste this command into bash
+
+
+then paste into bash(also copied from same place as command above):
+git push heroku master 
+
+it fails as we dont have requirements.txt file
+create requirements.txt file by typing in BASH:
+sudo pip3 freeze --local > requirements.txt
+
+git add .
+git commit -m"added requirements.txt"
+
+git push heroku master
+
+missing proc file:
+type in bash 
+echo web: python app.py > Procfile
+
+git add .
+git commit -m"Added Procfile"
+
+git push heroku master
+
+heroku ps:scale web=1               #this command gets it up and running
+
+go over to heroku-settings-reveal config vars
+type IP as key and 0.0.0.0 as value
+type PORT as key and 5000 as value
+

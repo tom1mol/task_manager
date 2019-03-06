@@ -1,2 +1,93 @@
 sudo pip3 install flask                             #install flask
 
+
+
+heroku:
+go to dashboard.heroku.com/apps
+>>>create new app
+>>>name:task-manager-flask-mongodonkey
+>>region: europe
+
+
+
+in bash type: heroku login
+email: tom1mol2018@gmail.com    
+pass: 30S19?
+
+bash type: heroku apps          #displays apps we have in heroku
+
+go to heroke page...task-manager-flask-mongodonkey >>> create new git repository and copy command below
+>>>heroku git:remote -a task-manager-flask-mongodonkey
+
+paste this command into bash
+
+
+then paste into bash(also copied from same place as command above):
+git push heroku master 
+
+it fails as we dont have requirements.txt file
+create requirements.txt file by typing in BASH:
+sudo pip3 freeze --local > requirements.txt
+
+git add .
+git commit -m"added requirements.txt"
+
+git push heroku master
+
+missing proc file:
+type in bash 
+echo web: python app.py > Procfile
+
+git add .
+git commit -m"Added Procfile"
+
+git push heroku master
+
+heroku ps:scale web=1               #this command gets it up and running
+
+go over to heroku-settings-reveal config vars
+type IP as key and 0.0.0.0 as value
+type PORT as key and 5000 as value
+
+
+connect FLASK TO MONGODB ATLAS:
+
+sudo pip3 install flask-pymongo                                 #slightly different from pymongo as is optimized to work with flask
+
+sudo pip3 install dnspython                                     #to use new style connection string for mongodb atlas
+
+                                    -------------------------------
+to change using an environment variable for the root password with heroku/mongo/c9:
+
+go back to the video on Run commands from a python file in the go humongous with mongodb
+atlas section you will see how to make the mongo_uri string an environment variable.
+
+https://courses.codeinstitute.net/courses/course-v1:CodeInstitute+DCP101+2017_T3/courseware/58bca0e827fc46bc862c5e2aeec97468/a5946a4398f4434f8b83d3fb769d6551/?child=first
+
+in bash:
+nano .bashrc        #this opens nano
+
+export MONGO_URI="mongodb+srv://shoot:30Mf1@myfirstcluster-tjr5r.mongodb.net/task_manager?retryWrites=true"
+
+ctrl x to exit....y to save...enter to return to bash
+
+close bash and open again
+
+then type: 
+echo $MONGO_URI         #this prints our connection string back to us
+
+go to settings in HEROKU - reveal config vars and put in new key and values:
+key = MONGO_URI
+value = 'mongodb+srv://shoot:<PASSWORD>@myfirstcluster-tjr5r.mongodb.net/task_manager?retryWrites=true'
+
+now replace in app.py:
+app.config["MONGO_URI"] = 'mongodb+srv://shoot:<PASSWORD>@myfirstcluster-tjr5r.mongodb.net/task_manager?retryWrites=true'
+
+with:
+app.config["MONGO_URI"] = os.getenv('MONGO_URI', 'mongodb://localhost') 
+
+
+go to app.py---run it and open the link
+                                        -------------------------------------------
+
+

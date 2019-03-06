@@ -1,0 +1,20 @@
+<!DOCTYPE html>     <!-- parent template for all our views. contain references to JS, CSS, 3rd party libraries for the app-->
+<html lang="en">
+<head>      
+    
+</head>
+<body>
+    <h1>Outside!</h1>
+    {% block content %}
+    {% endblock %}
+    
+</body>
+</html>
+
+
+<!--this acts as a one-stop shop that neatly provides access and visibility to our JavaScript files, our CSS, and our navigation.
+The point of the template is that you don't have to repeat yourself.
+That is a philosophy within framework development: DRY, don't repeat yourself.
+in order to inject the child content, we create an opening and a block tag. 
+the block keyword is required, but in this example, we see the word content, or the string content.
+-->
