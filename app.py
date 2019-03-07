@@ -34,4 +34,4 @@ def add_task():
 if __name__ == '__main__':                                      #we set the host using OS import, environ object and get the IP.                                                                set the port and convert it to an integer(again using os.environ)
     app.run(host=os.environ.get('IP'),
         port=int(os.environ.get('PORT')), 
-        debug=True)                                             #set debug to True as it allows changes to be picked up                                                                automatically in the browser and produce debug statements in the                                                       case of a bug
+        debug=True)                                             #set debug to True as it allows changes to be picked up                                                                automatically in the browser and produce debug statements in the case of a bug

@@ -1,13 +1,12 @@
-<!DOCTYPE html>     <!-- parent template for all our views. contain references to JS, CSS, 3rd party libraries for the app-->
-<html lang="en">
+<!DOCTYPE html>     
+<html>
 <head> 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 </head>
 <body>
     
-    {% block content %}
-    {% endblock %}
+    {% block content %} {% endblock %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <script type="text/javascript"> 
@@ -18,6 +17,7 @@
 </body>
 </html>
 
+<!-- parent template for all our views. contain references to JS, CSS, 3rd party libraries for the app-->
 
 <!--this acts as a one-stop shop that neatly provides access and visibility to our JavaScript files, our CSS, and our navigation.
 The point of the template is that you don't have to repeat yourself.
