@@ -10,6 +10,11 @@
     {% endblock %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){    
+            $('.collapsible').collapsible();
+        });
+    </script>
 </body>
 </html>
 
@@ -21,3 +26,17 @@ in order to inject the child content, we create an opening and a block tag.
 the block keyword is required, but in this example, we see the word content, or the string content.
 -->
 <!-- script tag and links copied from links folder in 7-materialize setup folder-->
+
+
+<!--         COLLAPSIBLE CODE
+
+$(document).ready(function(){
+    $('.collapsible').collapsible();
+  });
+  
+  (we'll place this in the base.html in the parent template so that any collapsible elements can access this functionality when they're being rendered.)
+-->
+  
+  
+  
+  
