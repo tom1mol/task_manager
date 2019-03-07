@@ -1,26 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
-                {% for task in tasks %}
-                {{task.task_name}}
-                {{task.category_name}}
-                {{task.task_description}}
-                {{task.is_urgent}}
-                {{task.due_date}}
-                {% endfor %}
+                
                 
 <ul class="collapsible" data-collapsible-"accordian">   <!--copy/pasted from https://materializecss.com/collapsible.html-->
+    {% for task in tasks %} 
     <li>
-      <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
-      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+      <div class="collapsible-header"><i class="material-icons">expand_more</i> <strong>{{task.task_name}}</strong> - {{task.due_date}}
+      </div>
+      <div class="collapsible-body">
+          <span>
+              {{task.task_description}}
+          </span>
+      </div>
     </li>
-    <li>
-      <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
-      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-    </li>
-    <li>
-      <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
-      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-    </li>
+    {% endfor %}
 </ul>
        
 
@@ -30,3 +23,4 @@
 <!-- for the child tag to inherit correctly from the parent, we remove the HTML elements, e.g. HTML, the body, the head, and HTML tags themselves and replace them with another jinja block -->
 <!--display the contents of each field name that's in our database in our tasks collection. -->
 <!-- If we don't specify the word content in this case, it won't be displayed because the parent is looking for that.(looking for content within a block that has that identifier -->
+
