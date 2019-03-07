@@ -23,6 +23,14 @@ mongo = PyMongo(app)                                                #instance of
 def get_tasks():
     return render_template("tasks.html", tasks=mongo.db.tasks.find())   #.tasks is collection. find method returns everything in                                                                   tasks collection
                                                                     # redirect to an existing template, which will be called tasks.hmtl. supply a tasks collection, which will be returned from making a call directly to Mongo.
+                                                                    
+
+
+@app.route('/add_task')                                         #decorator with route '/add_task'
+def add_task():
+    return render_template('addtask.html')
+                                                                    
+                                                                    
 if __name__ == '__main__':                                      #we set the host using OS import, environ object and get the IP.                                                                set the port and convert it to an integer(again using os.environ)
     app.run(host=os.environ.get('IP'),
         port=int(os.environ.get('PORT')), 

@@ -5,7 +5,13 @@
 <ul class="collapsible" data-collapsible-"accordian">   <!--copy/pasted from https://materializecss.com/collapsible.html-->
     {% for task in tasks %} 
     <li>
-      <div class="collapsible-header"><i class="material-icons">expand_more</i> <strong>{{task.task_name}}</strong> - {{task.due_date}}
+      <div class="collapsible-header">
+          
+          <div class="task_header col s9">
+              <i class="material-icons">expand_more</i> <strong>{{task.task_name}}</strong> - {{task.due_date}}
+              
+          </div>
+          
       </div>
       <div class="collapsible-body">
           <span>
