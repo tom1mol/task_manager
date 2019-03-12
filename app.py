@@ -21,7 +21,7 @@ mongo = PyMongo(app)                                                            
 @app.route('/')                                                                         #('/') refers to default route
 @app.route('/get_tasks')                                #string called get_tasks.when app is run..default function is get_tasks because of '/''
 def get_tasks():
-    return render_template("tasks.html", tasks=mongo.db.tasks.find())                       #.tasks is collection. find method returns everything in                                                                                           tasks collection
+    return render_template("tasks.html", tasks=mongo.db.tasks.find())                      
                                                                     # redirect to an existing template, which will be called tasks.hmtl. supply a tasks collection, which will be returned from making a call directly to Mongo.
                                                                     
 
@@ -37,6 +37,14 @@ def insert_task():
     tasks = mongo.db.tasks                                  #convert to dict so easily understood by mongo
     tasks.insert_one(request.form.to_dict())                #submitted in the form of a request object whenever we submit info to a URI/web location
     return redirect(url_for('get_tasks'))
+    
+
+@app.route('/edit_task/<task_id>')                      #edit task means edit properties associated with the task(due date, description etc)
+def edit_task(task_id):              #we want to display the task on an editable form.we need to retrieve that task from the database.target the ID
+    the_task = mongo.db.tasks.find_one({"_id": ObjectId(task_id)})  #find task from task collection using ID. _id is the key.
+    all_categories = mongo.db.categories.find()
+    return render_template('edittask.html', task=the_task, categories=all_categories) #pass the task back and the categories to our edittask.html
+
                                                                     
 if __name__ == '__main__':                                                          #we set the host using OS import, environ object and get the IP.                                                                                   set the port and convert it to an integer(again using os.environ)
     app.run(host=os.environ.get('IP'),
