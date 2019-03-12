@@ -2,3 +2,17 @@
     background-color: red;
 }
 */
+
+.btn_small {
+    height: 24px;
+    width: 60px;
+    line-height: 24px;
+    margin: 5px 5px;        /* 10 px distance between the buttons 5+5 */
+    padding: 0 0.5em;
+}
+
+/* task name and due date */
+
+.task_header {
+    margin-top: 5px;        /* to allignt it with buttons */
+}
