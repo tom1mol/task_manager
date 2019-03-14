@@ -44,12 +44,33 @@ def edit_task(task_id):              #we want to display the task on an editable
     the_task = mongo.db.tasks.find_one({"_id": ObjectId(task_id)})  #find task from task collection using ID. _id is the key.
     all_categories = mongo.db.categories.find()
     return render_template('edittask.html', task=the_task, categories=all_categories) #pass the task back and the categories to our edittask.html
+    
+    
+                                                                                        #when submit clicked..want to update database with edited values
+@app.route('/update_task/<task_id>', methods=["POST"])  #create route. specify HTTP method as POST(as it comes from our form)    
+def update_task(task_id):                                                               #pass in task_id as its a hook into the primary key
+    tasks = mongo.db.tasks
+    tasks.update( {'_id': ObjectId(task_id)},
+    {
+        'task_name': request.form.get('task_name'),
+        'category_name': request.form.get('category_name'),
+        'task_description': request.form.get('task_description'),
+        'due_date': request.form.get('due_date'),
+        'is_urgent': request.form.get('is_urgent')
+    })
+    return redirect(url_for('get_tasks'))
+    
+    
+@app.route('/delete_task/<task_id>', methods=["POST"])
+def delete_task(task_id):
+    mongo.db.tasks.remove({'_id': ObjectId(task_id)})
+    return redirect(url_for('get_tasks'))
 
                                                                     
 if __name__ == '__main__':                                                          #we set the host using OS import, environ object and get the IP.                                                                                   set the port and convert it to an integer(again using os.environ)
     app.run(host=os.environ.get('IP'),
         port=int(os.environ.get('PORT')), 
-        debug=True)                                                               #set debug to True as it allows changes to be picked up                                                                                        automatically in the browser and produce debug statements in the                                                                           case of a bug
+        debug=True)                                                               #set debug to True as it allows changes to be picked """""up                                                                                        automatically in the browser and produce debug statements in the                                                                           case of a bug
 
 
 

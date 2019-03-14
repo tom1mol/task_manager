@@ -1,28 +1,20 @@
 {% extends 'base.html' %}
 {% block content %}
                 
-<div class="row">             
+             
     <ul class="collapsible" data-collapsible= "accordion">
         {% for task in tasks %}
         <li>
             <div class="collapsible-header">
-                <div class="col s3">
+                <div class="col s1">
                     <i class="material-icons">expand_more</i> 
-                    <form action="{{url_for('delete_task', task_id=task._id)}}" method="POST">
-                        <button type="submit" class="waves-effect waves-light btn btn_small">Done</button>
-                    </form>
-                    <a href="{{url_for('edit_task', task_id=task._id)}}" class="waves-effect waves-light btn btn_small blue">Edit</a>
-                    <!--https://materializecss.com/buttons.html-->
-                
                 </div>
-<!--                
                 <div class="col s2">
                     <div class="inline_actions">
-                        <a href="{{url_for('delete_task', task_id=task._id)}}" class="waves-effect waves-light btn btn_small">Done</a>                   
+                        <a href="{{url_for('delete_task', task_id=task._id)}}" class="waves-effect waves-light btn btn_small">Done</a>                   <!--https://materializecss.com/buttons.html-->
                         <a href="{{url_for('edit_task', task_id=task._id)}}" class="waves-effect waves-light btn btn_small blue">Edit</a>
                     </div>
                 </div>
--->
                 <div class="task_header col s9">
                     <strong>{{task.task_name}}</strong> - {{task.due_date}}
                 </div>
@@ -47,7 +39,7 @@
         {% endfor %}
     </ul>
        
-</div>
+
 {% endblock %}
 
 
