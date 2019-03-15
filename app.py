@@ -78,6 +78,23 @@ def get_categories():
 def delete_category(category_id):                   #create function with same name(delete_category) and pass in category_id as parameter to locate and
    mongo.db.categories.remove({'_id': ObjectId(category_id)})      #remove that category document from categories collection
    return redirect(url_for('get_categories'))
+   
+   
+   
+@app.route('/edit_category/<category_id>')  #edit_category takes viewer to an editable page. update_category will do the update. we pass category_id into 
+def edit_category(category_id):             #the function. we name the function edit_category(same name as route). we pass in category_id
+    return render_template('editcategory.html',
+    category=mongo.db.categories.find_one({'_id': ObjectId(category_id)})) #overall job is to pass user to new view while obtaining category document from
+                                                                            #database for editing
+                                                                            
+                                                                            
+@app.route('/update_category/<category_id>', methods=['POST'])    #Pass in the category_id as a parameter for use in the update call
+def update_category(category_id):
+    mongo.db.categories.update(             #get categories collection from mongo
+        {'_id': ObjectId(category_id)},
+        {'category_name': request.form.get('category_name')})   #pass in request object.drill into form contained in request object.refer to form item
+                                                                #category_name
+    return redirect(url_for('get_categories'))  #return redirect back to categories section
 
                                                                     
 if __name__ == '__main__':                                                          #we set the host using OS import, environ object and get the IP.                                                                                   set the port and convert it to an integer(again using os.environ)

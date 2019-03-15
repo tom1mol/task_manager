@@ -10,11 +10,21 @@
         <ul class="collapsible" data-collapsible= "accordion">
             {% for category in categories %}
             <li>
+                
+<!--
                 <div class="collapsible-header">
                     <form action="{{url_for('delete_category', category_id=category._id)}}" method="POST">
                          <button type="submit" class="waves-effect waves-light btn btn_small">Del</button>
                     </form>
-                    <a href="" class="waves-effect waves-light btn btn_small blue">Edit</a>
+-->
+            <!--
+                    <form action="{{url_for('edit_category', category_id=category._id)}}" method="POST">        
+                         <button type="submit" class="waves-effect waves-light btn btn_small">Edit</button>
+                    </form>
+            -->
+                <div class="collapsible-header">
+                    <a href="" class="waves-effect waves-light btn btn_small">Del</a> 
+                    <a href="{{url_for('edit_category', category_id=category._id)}}" class="waves-effect waves-light btn btn_small blue">Edit</a>
                         <!--https://materializecss.com/buttons.html-->
                     
                     
@@ -28,8 +38,6 @@
             </li>
             {% endfor %}
         </ul>
-           
-    
 </div>
          
 {% endblock %}
