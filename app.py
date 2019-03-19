@@ -86,15 +86,17 @@ def edit_category(category_id):             #the function. we name the function 
     return render_template('editcategory.html',
     category=mongo.db.categories.find_one({'_id': ObjectId(category_id)})) #overall job is to pass user to new view while obtaining category document from
                                                                             #database for editing
+                                                    #category_id passed in as a parameter.used to search for that document and feed it to editcategory.html
+                                                    #we get it there by pasing it over as a parameter called category
                                                                             
                                                                             
 @app.route('/update_category/<category_id>', methods=['POST'])    #Pass in the category_id as a parameter for use in the update call
 def update_category(category_id):
     mongo.db.categories.update(             #get categories collection from mongo
-        {'_id': ObjectId(category_id)},
-        {'category_name': request.form.get('category_name')})   #pass in request object.drill into form contained in request object.refer to form item
-                                                                #category_name
-    return redirect(url_for('get_categories'))  #return redirect back to categories section
+        {'_id': ObjectId(category_id)},     #identify and format the ID
+        {'category_name': request.form.get('category_name')})   #pass in request object. drill into form contained in request object.refer to form item
+                                                                #whose name is category_name
+    return redirect(url_for('get_categories'))  #return redirect back to categories section using get_categories function
 
                                                                     
 if __name__ == '__main__':                                                          #we set the host using OS import, environ object and get the IP.                                                                                   set the port and convert it to an integer(again using os.environ)
